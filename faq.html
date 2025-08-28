@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Victory Flag Publications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#8B4513',
+                        accent: '#FFD700',
+                        background: '#FFF8F0',
+                        textDark: '#2F2F2F',
+                        success: '#228B22'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out; }
+        .hover-scale { transition: transform 0.3s ease; }
+        .hover-scale:hover { transform: scale(1.05); }
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+        .faq-item { transition: all 0.3s ease; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-answer.active { max-height: 200px; }
+    </style>
+</head>
+<body class="font-poppins bg-background text-textDark">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover-scale">
+                        <i class="fas fa-flag text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-secondary">Victory Flag</h1>
+                        <p class="text-xs text-gray-600">Publications</p>
+                    </div>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-primary transition-colors duration-300">Home</a>
+                    <a href="products.html" class="text-gray-600 hover:text-primary transition-colors duration-300">Books</a>
+                    <a href="help.html" class="text-gray-600 hover:text-primary transition-colors duration-300">Help</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary transition-colors duration-300">Contact</a>
+                </nav>
+                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors duration-300">
+                    <i class="fas fa-home mr-2"></i>Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16 md:py-24 bg-gradient-to-r from-primary/10 to-secondary/10">
+        <div class="container mx-auto px-4 text-center">
+            <div class="scroll-reveal">
+                <h1 class="text-3xl md:text-5xl font-bold text-secondary mb-6">Frequently Asked Questions</h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Find answers to common questions about our books, orders, and services</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto scroll-reveal">
+                <div class="relative">
+                    <input type="text" id="faqSearch" placeholder="Search for answers..." 
+                           class="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors duration-300">
+                    <i class="fas fa-search absolute right-6 top-5 text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Categories -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- Category Tabs -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12 scroll-reveal">
+                    <button class="faq-category-btn active px-6 py-3 rounded-lg font-semibold transition-all duration-300" data-category="all">
+                        All Questions
+                    </button>
+                    <button class="faq-category-btn px-6 py-3 rounded-lg font-semibold transition-all duration-300" data-category="orders">
+                        Orders & Shipping
+                    </button>
+                    <button class="faq-category-btn px-6 py-3 rounded-lg font-semibold transition-all duration-300" data-category="books">
+                        Books & Content
+                    </button>
+                    <button class="faq-category-btn px-6 py-3 rounded-lg font-semibold transition-all duration-300" data-category="account">
+                        Account & Payment
+                    </button>
+                    <button class="faq-category-btn px-6 py-3 rounded-lg font-semibold transition-all duration-300" data-category="returns">
+                        Returns & Refunds
+                    </button>
+                </div>
+
+                <!-- FAQ Items -->
+                <div class="space-y-4">
+                    <!-- Orders & Shipping -->
+                    <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden scroll-reveal" data-category="orders">
+                        <button class="faq-question w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <span class="font-semibold text-lg">How long does shipping take?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                We offer two shipping options: Standard delivery (5-7 business days) which is free for all orders, and Express delivery (2-3 business days) for ₹99. Orders are typically processed within 24 hours of confirmation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden scroll-reveal" data-category="orders">
+                        <button class="faq-question w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <span class="font-semibold text-lg">Can I track my order?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                Yes! Once your order is shipped, you'll receive a tracking number via email and SMS. You can also track your order status in your account dashboard or by clicking the "Track Order" link in the header.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden scroll-reveal" data-category="orders">
+                        <button class="faq-question w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <span class="font-semibold text-lg">Do you ship internationally?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                Currently, we ship within India only. We're working on expanding our international shipping options. Please check back soon or contact us for specific international requests.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Books & Content -->
+                    <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden scroll-reveal" data-category="books">
+                        <button class="faq-question w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <span class="font-semibold text-lg">Are the books available in multiple languages?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                Yes! Many of our books are available in English, Bengali (বাংলা), and Hindi (हिंदी). You can filter books by language on our products page or check the language options on individual product pages.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden scroll-reveal" data-category="books">
+                        <button class="faq-question w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <span class="font-semibold text-lg">Do you offer e-books or digital versions?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                Yes, many of our titles are available as e-books at discounted prices. E-books are delivered instantly via email after purchase and can be read on any device with a PDF reader.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden scroll-reveal" data-category="books">
+                        <button class="faq-question w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <span class="font-semibold text-lg">Are there audio book versions available?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                We have a growing collection of audio books narrated by His Holiness Jayapataka Swami himself. These are available for download and streaming through our platform.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Account & Payment -->
+                    <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden scroll-reveal" data-category="account">
+                        <button class="faq-question w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <span class="font-semibold text-lg">What payment methods do you accept?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                We accept all major payment methods including Credit/Debit Cards, UPI, Net Banking, Digital Wallets (Paytm, PhonePe, etc.), and Cash on Delivery. All payments are processed securely through Razorpay.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden scroll-reveal" data-category="account">
+                        <button class="faq-question w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <span class="font-semibold text-lg">How do I create an account?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                Click on "Account" in the header and select "Sign Up". You can create an account using your email or sign up instantly with Google. Having an account helps you track orders, save addresses, and earn reward points.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Returns & Refunds -->
+                    <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden scroll-reveal" data-category="returns">
+                        <button class="faq-question w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <span class="font-semibold text-lg">What is your return policy?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                We offer a 30-day return policy for physical books in original condition. E-books and audio books are non-returnable due to their digital nature. Please see our detailed <a href="return-policy.html" class="text-primary hover:underline">Return Policy</a> for more information.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl shadow-lg overflow-hidden scroll-reveal" data-category="returns">
+                        <button class="faq-question w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                            <span class="font-semibold text-lg">How long do refunds take?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                Refunds are processed within 5-7 business days after we receive the returned item. The amount will be credited back to your original payment method. For Cash on Delivery orders, refunds are processed via bank transfer.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-2xl mx-auto scroll-reveal">
+                <h2 class="text-3xl font-bold text-secondary mb-6">Still have questions?</h2>
+                <p class="text-gray-600 mb-8">Can't find the answer you're looking for? Our customer support team is here to help.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover-scale">
+                        Contact Support
+                    </a>
+                    <a href="help.html" class="bg-white text-primary border-2 border-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-all duration-300 hover-scale">
+                        Help Center
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-textDark text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                            <i class="fas fa-flag text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold">Victory Flag</h4>
+                            <p class="text-sm text-gray-400">Publications</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Spreading spiritual wisdom through the profound teachings of His Holiness Jayapataka Swami.</p>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors duration-300">Our Books</a></li>
+                        <li><a href="about-author.html" class="text-gray-400 hover:text-white transition-colors duration-300">About Guru</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Support</h5>
+                    <ul class="space-y-2">
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white transition-colors duration-300">FAQ</a></li>
+                        <li><a href="help.html" class="text-gray-400 hover:text-white transition-colors duration-300">Help Center</a></li>
+                        <li><a href="shipping-policy.html" class="text-gray-400 hover:text-white transition-colors duration-300">Shipping</a></li>
+                        <li><a href="return-policy.html" class="text-gray-400 hover:text-white transition-colors duration-300">Returns</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Contact Info</h5>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-primary"></i>
+                            <span class="text-gray-400">+91 98765 43210</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-primary"></i>
+                            <span class="text-gray-400">info@victoryflagpublications.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">© 2024 Victory Flag Publications. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('revealed');
+            });
+        }, observerOptions);
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // FAQ functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Close other open answers
+                document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+                    if (otherAnswer !== answer) {
+                        otherAnswer.classList.remove('active');
+                        otherAnswer.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // Toggle current answer
+                answer.classList.toggle('active');
+                icon.style.transform = answer.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        });
+
+        // Category filtering
+        document.querySelectorAll('.faq-category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
+                
+                // Update active button
+                document.querySelectorAll('.faq-category-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-primary', 'text-white');
+                    b.classList.add('bg-gray-200', 'text-gray-600');
+                });
+                btn.classList.add('active', 'bg-primary', 'text-white');
+                btn.classList.remove('bg-gray-200', 'text-gray-600');
+                
+                // Filter FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Initialize category buttons
+        document.querySelectorAll('.faq-category-btn').forEach(btn => {
+            if (btn.classList.contains('active')) {
+                btn.classList.add('bg-primary', 'text-white');
+            } else {
+                btn.classList.add('bg-gray-200', 'text-gray-600');
+            }
+        });
+
+        // Search functionality
+        document.getElementById('faqSearch').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer p').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

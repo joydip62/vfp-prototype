@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Victory Flag Publications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#8B4513',
+                        accent: '#FFD700',
+                        background: '#FFF8F0',
+                        textDark: '#2F2F2F',
+                        success: '#228B22'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out; }
+        .hover-scale { transition: transform 0.3s ease; }
+        .hover-scale:hover { transform: scale(1.05); }
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+        .step-active { background: #FF6B35; color: white; }
+        .step-completed { background: #228B22; color: white; }
+    </style>
+</head>
+<body class="font-poppins bg-background text-textDark">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover-scale">
+                        <i class="fas fa-flag text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-secondary">Victory Flag</h1>
+                        <p class="text-xs text-gray-600">Publications</p>
+                    </div>
+                </a>
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-lock text-success"></i>
+                    <span class="text-sm text-gray-600">Secure Checkout</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Steps -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-center space-x-4 md:space-x-8">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full step-completed flex items-center justify-center text-sm font-semibold">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-success">Cart</span>
+                </div>
+                <div class="w-8 md:w-16 h-0.5 bg-success"></div>
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full step-active flex items-center justify-center text-sm font-semibold">2</div>
+                    <span class="ml-2 text-sm font-medium text-primary">Checkout</span>
+                </div>
+                <div class="w-8 md:w-16 h-0.5 bg-gray-300"></div>
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-sm font-semibold text-gray-600">3</div>
+                    <span class="ml-2 text-sm font-medium text-gray-600">Payment</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Checkout Form -->
+            <div class="lg:col-span-2">
+                <form id="checkoutForm" class="space-y-8">
+                    <!-- Shipping Information -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+                        <h3 class="text-xl font-bold text-secondary mb-6">Shipping Information</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                            <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Address *</label>
+                            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">City *</label>
+                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">State *</label>
+                                <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+                                    <option>Select State</option>
+                                    <option>Maharashtra</option>
+                                    <option>Delhi</option>
+                                    <option>Karnataka</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">PIN Code *</label>
+                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Options -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+                        <h3 class="text-xl font-bold text-secondary mb-6">Delivery Options</h3>
+                        <div class="space-y-4">
+                            <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-primary transition-colors duration-300">
+                                <input type="radio" name="delivery" value="standard" checked class="text-primary focus:ring-primary">
+                                <div class="ml-4 flex-1">
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="font-semibold">Standard Delivery</p>
+                                            <p class="text-sm text-gray-600">5-7 business days</p>
+                                        </div>
+                                        <span class="font-bold text-success">FREE</span>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-primary transition-colors duration-300">
+                                <input type="radio" name="delivery" value="express" class="text-primary focus:ring-primary">
+                                <div class="ml-4 flex-1">
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="font-semibold">Express Delivery</p>
+                                            <p class="text-sm text-gray-600">2-3 business days</p>
+                                        </div>
+                                        <span class="font-bold text-secondary">₹99</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+                        <h3 class="text-xl font-bold text-secondary mb-6">Payment Method</h3>
+                        <div class="space-y-4">
+                            <label class="flex items-center p-4 border-2 border-primary rounded-lg cursor-pointer bg-primary/5">
+                                <input type="radio" name="payment" value="razorpay" checked class="text-primary focus:ring-primary">
+                                <div class="ml-4 flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-credit-card text-primary"></i>
+                                            <span class="font-semibold">Razorpay (Recommended)</span>
+                                        </div>
+                                        <div class="flex space-x-2">
+                                            <div class="w-8 h-5 bg-blue-600 rounded flex items-center justify-center">
+                                                <span class="text-white text-xs font-bold">VISA</span>
+                                            </div>
+                                            <div class="w-8 h-5 bg-red-600 rounded flex items-center justify-center">
+                                                <span class="text-white text-xs font-bold">MC</span>
+                                            </div>
+                                            <div class="w-8 h-5 bg-purple-600 rounded flex items-center justify-center">
+                                                <span class="text-white text-xs font-bold">UPI</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-2">Credit/Debit Cards, UPI, Net Banking, Wallets</p>
+                                </div>
+                            </label>
+                            <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-primary transition-colors duration-300">
+                                <input type="radio" name="payment" value="cod" class="text-primary focus:ring-primary">
+                                <div class="ml-4 flex-1">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-money-bill-wave text-success"></i>
+                                        <span class="font-semibold">Cash on Delivery</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-2">Pay when you receive your order</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-lg sticky top-24 scroll-reveal">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-xl font-bold text-secondary">Order Summary</h3>
+                    </div>
+                    
+                    <div class="p-6">
+                        <!-- Order Items -->
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-20 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-book text-secondary/50"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-sm">Spiritual Wisdom for Modern Life</h4>
+                                    <p class="text-xs text-gray-600">Paperback • English</p>
+                                    <p class="text-xs text-gray-600">Qty: 1</p>
+                                </div>
+                                <span class="font-bold text-secondary">₹299</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-20 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-book text-secondary/50"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-sm">Path to Enlightenment</h4>
+                                    <p class="text-xs text-gray-600">Hardcover • English</p>
+                                    <p class="text-xs text-gray-600">Qty: 1</p>
+                                </div>
+                                <span class="font-bold text-secondary">₹349</span>
+                            </div>
+                        </div>
+
+                        <!-- Coupon Code -->
+                        <div class="mb-6">
+                            <div class="flex space-x-2">
+                                <input type="text" placeholder="Coupon code" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <button class="bg-secondary text-white px-4 py-2 rounded-lg text-sm hover:bg-secondary/90 transition-all duration-300">Apply</button>
+                            </div>
+                        </div>
+
+                        <!-- Price Breakdown -->
+                        <div class="space-y-3 mb-6">
+                            <div class="flex justify-between">
+                                <span>Subtotal (2 items)</span>
+                                <span>₹648</span>
+                            </div>
+                            <div class="flex justify-between text-success">
+                                <span>Discount</span>
+                                <span>-₹100</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Shipping</span>
+                                <span class="text-success">FREE</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Tax</span>
+                                <span>₹32</span>
+                            </div>
+                            <div class="border-t border-gray-200 pt-3">
+                                <div class="flex justify-between text-lg font-bold">
+                                    <span>Total</span>
+                                    <span class="text-secondary">₹580</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Place Order Button -->
+                        <button type="submit" form="checkoutForm" class="w-full bg-primary text-white py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover-scale mb-4">
+                            Place Order
+                        </button>
+
+                        <!-- Security Info -->
+                        <div class="text-center">
+                            <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                                <i class="fas fa-shield-alt text-success"></i>
+                                <span>Secure checkout with SSL encryption</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-textDark text-white py-16 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <i class="fas fa-flag text-white"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold">Victory Flag Publications</h4>
+                    </div>
+                </div>
+                <p class="text-gray-400">© 2024 Victory Flag Publications. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('revealed');
+            });
+        }, observerOptions);
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // Form submission
+        document.getElementById('checkoutForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Order placed successfully! Redirecting to payment...');
+            setTimeout(() => {
+                window.location.href = 'user-dashboard.html';
+            }, 2000);
+        });
+
+        // Payment method selection
+        document.querySelectorAll('input[name="payment"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                document.querySelectorAll('label').forEach(label => {
+                    if (label.querySelector('input[name="payment"]')) {
+                        label.classList.remove('border-primary', 'bg-primary/5');
+                        label.classList.add('border-gray-200');
+                    }
+                });
+                radio.closest('label').classList.add('border-primary', 'bg-primary/5');
+                radio.closest('label').classList.remove('border-gray-200');
+            });
+        });
+
+        // Delivery option selection
+        document.querySelectorAll('input[name="delivery"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                document.querySelectorAll('label').forEach(label => {
+                    if (label.querySelector('input[name="delivery"]')) {
+                        label.classList.remove('border-primary');
+                        label.classList.add('border-gray-200');
+                    }
+                });
+                radio.closest('label').classList.add('border-primary');
+                radio.closest('label').classList.remove('border-gray-200');
+            });
+        });
+    </script>
+</body>
+</html>

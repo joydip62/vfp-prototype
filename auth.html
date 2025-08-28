@@ -54,6 +54,7 @@
         .animate-float { animation: float 3s ease-in-out infinite; }
         .hover-scale { transition: transform 0.3s ease; }
         .hover-scale:hover { transform: scale(1.05); }
+        .animate-pulse-slow { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         .form-container { min-height: 500px; }
         .auth-bg {
             background: linear-gradient(135deg, #FF6B35 0%, #8B4513 50%, #FFD700 100%);
@@ -62,23 +63,239 @@
 </head>
 <body class="font-poppins bg-background text-textDark">
     <!-- Header -->
-    <header class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex items-center justify-between">
-                <a href="index.html" class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover-scale">
-                        <i class="fas fa-flag text-white"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-xl font-bold text-secondary">Victory Flag</h1>
-                        <p class="text-xs text-gray-600">Publications</p>
-                    </div>
-                </a>
-                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors duration-300">
-                    <i class="fas fa-home mr-2"></i>Back to Home
-                </a>
-            </div>
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <!-- Top Bar -->
+      <div class="bg-secondary text-white py-2">
+        <div
+          class="container mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center text-sm"
+        >
+          <div class="flex items-center space-x-4">
+            <span><i class="fas fa-phone mr-1"></i> +91 98765 43210</span>
+            <span class="hidden md:block"
+              ><i class="fas fa-envelope mr-1"></i>
+              info@victoryflagpublications.com</span
+            >
+          </div>
+          <div class="flex items-center space-x-4">
+            <select class="bg-transparent border-none text-white text-sm">
+              <option>English</option>
+              <option>বাংলা</option>
+              <option>हिंदी</option>
+            </select>
+            <a href="#" class="hover:text-accent transition-colors duration-300"
+              >Track Order</a
+            >
+          </div>
         </div>
+      </div>
+
+      <!-- Main Header -->
+      <div class="container mx-auto px-4 md:px-8 lg:px-12 py-3 md:py-4">
+        <div class="flex items-center justify-between gap-2 md:gap-4">
+          <!-- Logo -->
+          <div class="flex items-center space-x-2 md:space-x-3 flex-shrink-0">
+            <div
+              class="w-8 h-8 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center hover-scale"
+            >
+              <i class="fas fa-flag text-white text-sm md:text-xl"></i>
+            </div>
+            <div class="hidden sm:block">
+              <h1 class="text-lg md:text-2xl font-bold text-secondary">
+                Victory Flag
+              </h1>
+              <p class="text-xs md:text-sm text-gray-600">Publications</p>
+            </div>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="flex-1 max-w-md md:max-w-2xl mx-2 md:mx-8">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Search books..."
+                class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition-colors duration-300"
+              />
+              <button
+                class="absolute right-2 md:right-3 top-2 md:top-3 text-gray-400 hover:text-primary transition-colors duration-300"
+              >
+                <i class="fas fa-search text-sm md:text-base"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Header Actions -->
+          <div class="flex items-center space-x-2 md:space-x-6 flex-shrink-0">
+            <a
+              href="auth.html"
+              class="flex flex-col md:flex-row items-center space-x-0 md:space-x-1 text-accent transition-colors duration-300 p-1"
+            >
+              <i class="fas fa-user text-sm md:text-base"></i>
+              <span class="hidden lg:block text-xs md:text-sm">Account</span>
+            </a>
+            <a
+              href="user-dashboard.html"
+              class="flex flex-col md:flex-row items-center space-x-0 md:space-x-1 hover:text-primary relative transition-colors duration-300 p-1"
+            >
+              <i class="fas fa-heart text-sm md:text-base"></i>
+              <span class="hidden lg:block text-xs md:text-sm">Wishlist</span>
+              <span
+                class="absolute -top-1 -right-1 md:-top-2 md:-right-2 bg-primary text-white text-xs rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center animate-pulse-slow"
+                >3</span
+              >
+            </a>
+            <a
+              href="cart.html"
+              class="flex flex-col md:flex-row items-center space-x-0 md:space-x-1 hover:text-primary relative transition-colors duration-300 p-1"
+            >
+              <i class="fas fa-shopping-cart text-sm md:text-base"></i>
+              <span class="hidden lg:block text-xs md:text-sm">Cart</span>
+              <span
+                class="absolute -top-1 -right-1 md:-top-2 md:-right-2 bg-primary text-white text-xs rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center animate-pulse-slow"
+                >2</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="bg-primary text-white">
+        <div class="container mx-auto px-4 md:px-8 lg:px-12">
+          <div class="flex items-center justify-between py-3">
+            <!-- Desktop Menu -->
+            <ul
+              class="hidden lg:flex items-center justify-center space-x-8 w-full"
+            >
+              <li>
+                <a
+                  href="index.html"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Home</a
+                >
+              </li>
+              <li class="relative group">
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium flex items-center transition-colors duration-300"
+                >
+                  Categories <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="products.html"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Spiritual Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Teachings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Audio Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about-author.html"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >About Guru</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button
+              id="mobileMenuBtn"
+              class="lg:hidden flex items-center justify-center w-8 h-8"
+            >
+              <div class="space-y-1">
+                <div
+                  class="w-6 h-0.5 bg-white transition-all duration-300"
+                ></div>
+                <div
+                  class="w-6 h-0.5 bg-white transition-all duration-300"
+                ></div>
+                <div
+                  class="w-6 h-0.5 bg-white transition-all duration-300"
+                ></div>
+              </div>
+            </button>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div
+            id="mobileMenu"
+            class="lg:hidden hidden bg-secondary/95 backdrop-blur-sm"
+          >
+            <ul class="py-4 space-y-2">
+              <li>
+                <a
+                  href="index.html"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Categories</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Spiritual Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Teachings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Audio Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about-author.html"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >About Guru</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <!-- Auth Container -->
@@ -315,6 +532,26 @@
                 }, 1500);
             });
         });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const bars = mobileMenuBtn.querySelectorAll('div > div');
+                if (mobileMenu.classList.contains('hidden')) {
+                    bars[0].style.transform = 'rotate(0deg)';
+                    bars[1].style.opacity = '1';
+                    bars[2].style.transform = 'rotate(0deg)';
+                } else {
+                    bars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    bars[1].style.opacity = '0';
+                    bars[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                }
+            });
+        }
     </script>
 </body>
 </html>

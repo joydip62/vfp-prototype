@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About His Holiness Jayapataka Swami - Victory Flag Publications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#8B4513',
+                        accent: '#FFD700',
+                        background: '#FFF8F0',
+                        textDark: '#2F2F2F',
+                        success: '#228B22'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .hover-scale { transition: transform 0.3s ease; }
+        .hover-scale:hover { transform: scale(1.05); }
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+        .animate-pulse-slow { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    </style>
+</head>
+<body class="font-poppins bg-background text-textDark">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <!-- Top Bar -->
+      <div class="bg-secondary text-white py-2">
+        <div
+          class="container mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center text-sm"
+        >
+          <div class="flex items-center space-x-4">
+            <span><i class="fas fa-phone mr-1"></i> +91 98765 43210</span>
+            <span class="hidden md:block"
+              ><i class="fas fa-envelope mr-1"></i>
+              info@victoryflagpublications.com</span
+            >
+          </div>
+          <div class="flex items-center space-x-4">
+            <select class="bg-transparent border-none text-white text-sm">
+              <option>English</option>
+              <option>বাংলা</option>
+              <option>हिंदी</option>
+            </select>
+            <a href="#" class="hover:text-accent transition-colors duration-300"
+              >Track Order</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Header -->
+      <div class="container mx-auto px-4 md:px-8 lg:px-12 py-3 md:py-4">
+        <div class="flex items-center justify-between gap-2 md:gap-4">
+          <!-- Logo -->
+          <div class="flex items-center space-x-2 md:space-x-3 flex-shrink-0">
+            <div
+              class="w-8 h-8 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center hover-scale"
+            >
+              <i class="fas fa-flag text-white text-sm md:text-xl"></i>
+            </div>
+            <div class="hidden sm:block">
+              <h1 class="text-lg md:text-2xl font-bold text-secondary">
+                Victory Flag
+              </h1>
+              <p class="text-xs md:text-sm text-gray-600">Publications</p>
+            </div>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="flex-1 max-w-md md:max-w-2xl mx-2 md:mx-8">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Search books..."
+                class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition-colors duration-300"
+              />
+              <button
+                class="absolute right-2 md:right-3 top-2 md:top-3 text-gray-400 hover:text-primary transition-colors duration-300"
+              >
+                <i class="fas fa-search text-sm md:text-base"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Header Actions -->
+          <div class="flex items-center space-x-2 md:space-x-6 flex-shrink-0">
+            <a
+              href="auth.html"
+              class="flex flex-col md:flex-row items-center space-x-0 md:space-x-1 hover:text-primary transition-colors duration-300 p-1"
+            >
+              <i class="fas fa-user text-sm md:text-base"></i>
+              <span class="hidden lg:block text-xs md:text-sm">Account</span>
+            </a>
+            <a
+              href="user-dashboard.html"
+              class="flex flex-col md:flex-row items-center space-x-0 md:space-x-1 hover:text-primary relative transition-colors duration-300 p-1"
+            >
+              <i class="fas fa-heart text-sm md:text-base"></i>
+              <span class="hidden lg:block text-xs md:text-sm">Wishlist</span>
+              <span
+                class="absolute -top-1 -right-1 md:-top-2 md:-right-2 bg-primary text-white text-xs rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center animate-pulse-slow"
+                >3</span
+              >
+            </a>
+            <a
+              href="cart.html"
+              class="flex flex-col md:flex-row items-center space-x-0 md:space-x-1 hover:text-primary relative transition-colors duration-300 p-1"
+            >
+              <i class="fas fa-shopping-cart text-sm md:text-base"></i>
+              <span class="hidden lg:block text-xs md:text-sm">Cart</span>
+              <span
+                class="absolute -top-1 -right-1 md:-top-2 md:-right-2 bg-primary text-white text-xs rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center animate-pulse-slow"
+                >2</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="bg-primary text-white">
+        <div class="container mx-auto px-4 md:px-8 lg:px-12">
+          <div class="flex items-center justify-between py-3">
+            <!-- Desktop Menu -->
+            <ul
+              class="hidden lg:flex items-center justify-center space-x-8 w-full"
+            >
+              <li>
+                <a
+                  href="index.html"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Home</a
+                >
+              </li>
+              <li class="relative group">
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium flex items-center transition-colors duration-300"
+                >
+                  Categories <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="products.html"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Spiritual Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Teachings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Audio Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about-author.html"
+                  class="text-accent font-medium transition-colors duration-300"
+                  >About Guru</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button
+              id="mobileMenuBtn"
+              class="lg:hidden flex items-center justify-center w-8 h-8"
+            >
+              <div class="space-y-1">
+                <div
+                  class="w-6 h-0.5 bg-white transition-all duration-300"
+                ></div>
+                <div
+                  class="w-6 h-0.5 bg-white transition-all duration-300"
+                ></div>
+                <div
+                  class="w-6 h-0.5 bg-white transition-all duration-300"
+                ></div>
+              </div>
+            </button>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div
+            id="mobileMenu"
+            class="lg:hidden hidden bg-secondary/95 backdrop-blur-sm"
+          >
+            <ul class="py-4 space-y-2">
+              <li>
+                <a
+                  href="index.html"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Categories</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Spiritual Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Teachings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Audio Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about-author.html"
+                  class="block px-4 py-2 bg-white/10 text-accent transition-colors duration-300"
+                  >About Guru</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16 md:py-24 bg-gradient-to-r from-primary via-secondary to-accent text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="scroll-reveal">
+                    <h1 class="text-3xl md:text-5xl font-bold mb-6">His Holiness Jayapataka Swami</h1>
+                    <p class="text-xl mb-8 opacity-90">Spiritual Master, Author, and Guide to thousands of devotees worldwide</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                            <span class="font-semibold">50+ Years of Service</span>
+                        </div>
+                        <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                            <span class="font-semibold">100+ Books Published</span>
+                        </div>
+                        <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                            <span class="font-semibold">Global Teacher</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 animate-float">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=center" 
+                             alt="His Holiness Jayapataka Swami" 
+                             class="w-full h-96 object-cover rounded-xl shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biography Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-6">Life & Teachings</h2>
+                    <p class="text-xl text-gray-600">A journey of spiritual dedication and service to humanity</p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2 space-y-8">
+                        <div class="bg-white rounded-xl shadow-lg p-8 scroll-reveal">
+                            <h3 class="text-2xl font-bold text-secondary mb-4">Early Life & Spiritual Journey</h3>
+                            <p class="text-gray-600 leading-relaxed mb-4">
+                                His Holiness Jayapataka Swami was born in 1949 in Milwaukee, Wisconsin. From an early age, he showed a deep inclination towards spirituality and the search for life's ultimate purpose. His journey into Vedic wisdom began during his college years when he encountered the teachings of A.C. Bhaktivedanta Swami Prabhupada.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                In 1968, he joined the International Society for Krishna Consciousness (ISKCON) and dedicated his life to the practice and propagation of bhakti-yoga. His commitment to spiritual growth and service to others has been unwavering for over five decades.
+                            </p>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-lg p-8 scroll-reveal">
+                            <h3 class="text-2xl font-bold text-secondary mb-4">Literary Contributions</h3>
+                            <p class="text-gray-600 leading-relaxed mb-4">
+                                As a prolific author, His Holiness Jayapataka Swami has written over 100 books on various aspects of spiritual life, philosophy, and practical application of ancient wisdom in modern times. His works span multiple languages and have been translated into dozens of regional languages worldwide.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                His writing style is known for its clarity, practical approach, and ability to make complex philosophical concepts accessible to readers from all walks of life. Each book serves as a guide for spiritual seekers on their journey towards self-realization.
+                            </p>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-lg p-8 scroll-reveal">
+                            <h3 class="text-2xl font-bold text-secondary mb-4">Global Impact & Service</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Through his teachings, writings, and personal example, His Holiness has touched the lives of thousands of people across the globe. His approach to spirituality emphasizes practical application, compassionate service, and the integration of ancient wisdom with contemporary life challenges.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+                            <h4 class="text-lg font-bold text-secondary mb-4">Quick Facts</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-calendar text-primary"></i>
+                                    <span class="text-sm">Born: 1949</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-map-marker-alt text-primary"></i>
+                                    <span class="text-sm">Origin: Milwaukee, USA</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-book text-primary"></i>
+                                    <span class="text-sm">100+ Books Published</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-globe text-primary"></i>
+                                    <span class="text-sm">Global Teacher</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-language text-primary"></i>
+                                    <span class="text-sm">Multiple Languages</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+                            <h4 class="text-lg font-bold text-secondary mb-4">Popular Books</h4>
+                            <div class="space-y-3">
+                                <a href="product-detail.html" class="block hover:bg-gray-50 p-2 rounded transition-colors duration-300">
+                                    <p class="font-semibold text-sm">Spiritual Wisdom for Modern Life</p>
+                                    <p class="text-xs text-gray-600">Practical spirituality guide</p>
+                                </a>
+                                <a href="product-detail.html" class="block hover:bg-gray-50 p-2 rounded transition-colors duration-300">
+                                    <p class="font-semibold text-sm">Path to Enlightenment</p>
+                                    <p class="text-xs text-gray-600">Journey of self-discovery</p>
+                                </a>
+                                <a href="product-detail.html" class="block hover:bg-gray-50 p-2 rounded transition-colors duration-300">
+                                    <p class="font-semibold text-sm">Divine Consciousness</p>
+                                    <p class="text-xs text-gray-600">Understanding higher reality</p>
+                                </a>
+                            </div>
+                            <a href="products.html" class="block mt-4 text-primary hover:underline text-sm font-semibold">
+                                View All Books →
+                            </a>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl p-6 scroll-reveal">
+                            <h4 class="text-lg font-bold text-secondary mb-4">Connect</h4>
+                            <p class="text-sm text-gray-600 mb-4">Follow the teachings and stay updated with latest publications</p>
+                            <div class="flex space-x-3">
+                                <a href="#" class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300">
+                                    <i class="fab fa-facebook text-sm"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300">
+                                    <i class="fab fa-twitter text-sm"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-textDark hover:scale-110 transition-transform duration-300">
+                                    <i class="fab fa-youtube text-sm"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-textDark text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                            <i class="fas fa-flag text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold">Victory Flag</h4>
+                            <p class="text-sm text-gray-400">Publications</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Spreading spiritual wisdom through the profound teachings of His Holiness Jayapataka Swami.</p>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors duration-300">Our Books</a></li>
+                        <li><a href="about-author.html" class="text-gray-400 hover:text-white transition-colors duration-300">About Guru</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Support</h5>
+                    <ul class="space-y-2">
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white transition-colors duration-300">FAQ</a></li>
+                        <li><a href="help.html" class="text-gray-400 hover:text-white transition-colors duration-300">Help Center</a></li>
+                        <li><a href="shipping-policy.html" class="text-gray-400 hover:text-white transition-colors duration-300">Shipping</a></li>
+                        <li><a href="return-policy.html" class="text-gray-400 hover:text-white transition-colors duration-300">Returns</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Contact Info</h5>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-primary"></i>
+                            <span class="text-gray-400">+91 98765 43210</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-primary"></i>
+                            <span class="text-gray-400">info@victoryflagpublications.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">© 2024 Victory Flag Publications. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('revealed');
+            });
+        }, observerOptions);
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.scroll-reveal').forEach((el, index) => {
+            el.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const bars = mobileMenuBtn.querySelectorAll('div > div');
+                if (mobileMenu.classList.contains('hidden')) {
+                    bars[0].style.transform = 'rotate(0deg)';
+                    bars[1].style.opacity = '1';
+                    bars[2].style.transform = 'rotate(0deg)';
+                } else {
+                    bars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    bars[1].style.opacity = '0';
+                    bars[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
