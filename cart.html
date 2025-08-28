@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Victory Flag Publications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#8B4513',
+                        accent: '#FFD700',
+                        background: '#FFF8F0',
+                        textDark: '#2F2F2F',
+                        success: '#228B22'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out; }
+        .animate-bounce-in { animation: bounceIn 0.8s ease-out; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .hover-scale { transition: transform 0.3s ease; }
+        .hover-scale:hover { transform: scale(1.05); }
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+        .animate-pulse-slow { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    </style>
+</head>
+<body class="font-poppins bg-background text-textDark">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <!-- Top Bar -->
+      <div class="bg-secondary text-white py-2">
+        <div
+          class="container mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center text-sm"
+        >
+          <div class="flex items-center space-x-4">
+            <span><i class="fas fa-phone mr-1"></i> +91 98765 43210</span>
+            <span class="hidden md:block"
+              ><i class="fas fa-envelope mr-1"></i>
+              info@victoryflagpublications.com</span
+            >
+          </div>
+          <div class="flex items-center space-x-4">
+            <select class="bg-transparent border-none text-white text-sm">
+              <option>English</option>
+              <option>বাংলা</option>
+              <option>हिंदी</option>
+            </select>
+            <a href="#" class="hover:text-accent transition-colors duration-300"
+              >Track Order</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Header -->
+      <div class="container mx-auto px-4 md:px-8 lg:px-12 py-3 md:py-4">
+        <div class="flex items-center justify-between gap-2 md:gap-4">
+          <!-- Logo -->
+          <div class="flex items-center space-x-2 md:space-x-3 flex-shrink-0">
+            <div
+              class="w-8 h-8 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center hover-scale"
+            >
+              <i class="fas fa-flag text-white text-sm md:text-xl"></i>
+            </div>
+            <div class="hidden sm:block">
+              <h1 class="text-lg md:text-2xl font-bold text-secondary">
+                Victory Flag
+              </h1>
+              <p class="text-xs md:text-sm text-gray-600">Publications</p>
+            </div>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="flex-1 max-w-md md:max-w-2xl mx-2 md:mx-8">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Search books..."
+                class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition-colors duration-300"
+              />
+              <button
+                class="absolute right-2 md:right-3 top-2 md:top-3 text-gray-400 hover:text-primary transition-colors duration-300"
+              >
+                <i class="fas fa-search text-sm md:text-base"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Header Actions -->
+          <div class="flex items-center space-x-2 md:space-x-6 flex-shrink-0">
+            <a
+              href="auth.html"
+              class="flex flex-col md:flex-row items-center space-x-0 md:space-x-1 hover:text-primary transition-colors duration-300 p-1"
+            >
+              <i class="fas fa-user text-sm md:text-base"></i>
+              <span class="hidden lg:block text-xs md:text-sm">Account</span>
+            </a>
+            <a
+              href="#"
+              class="flex flex-col md:flex-row items-center space-x-0 md:space-x-1 hover:text-primary relative transition-colors duration-300 p-1"
+            >
+              <i class="fas fa-heart text-sm md:text-base"></i>
+              <span class="hidden lg:block text-xs md:text-sm">Wishlist</span>
+              <span
+                class="absolute -top-1 -right-1 md:-top-2 md:-right-2 bg-primary text-white text-xs rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center animate-pulse-slow"
+                >3</span
+              >
+            </a>
+            <a
+              href="cart.html"
+              class="flex flex-col md:flex-row items-center space-x-0 md:space-x-1 text-primary relative transition-colors duration-300 p-1"
+            >
+              <i class="fas fa-shopping-cart text-sm md:text-base"></i>
+              <span class="hidden lg:block text-xs md:text-sm">Cart</span>
+              <span
+                class="absolute -top-1 -right-1 md:-top-2 md:-right-2 bg-primary text-white text-xs rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center animate-pulse-slow"
+                >2</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="bg-primary text-white">
+        <div class="container mx-auto px-4 md:px-8 lg:px-12">
+          <div class="flex items-center justify-between py-3">
+            <!-- Desktop Menu -->
+            <ul
+              class="hidden lg:flex items-center justify-center space-x-8 w-full"
+            >
+              <li>
+                <a
+                  href="index.html"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Home</a
+                >
+              </li>
+              <li class="relative group">
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium flex items-center transition-colors duration-300"
+                >
+                  Categories <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="products.html"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Spiritual Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Teachings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Audio Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >About Guru</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button
+              id="mobileMenuBtn"
+              class="lg:hidden flex items-center justify-center w-8 h-8"
+            >
+              <div class="space-y-1">
+                <div
+                  class="w-6 h-0.5 bg-white transition-all duration-300"
+                ></div>
+                <div
+                  class="w-6 h-0.5 bg-white transition-all duration-300"
+                ></div>
+                <div
+                  class="w-6 h-0.5 bg-white transition-all duration-300"
+                ></div>
+              </div>
+            </button>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div
+            id="mobileMenu"
+            class="lg:hidden hidden bg-secondary/95 backdrop-blur-sm"
+          >
+            <ul class="py-4 space-y-2">
+              <li>
+                <a
+                  href="index.html"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Categories</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Spiritual Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Teachings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Audio Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >About Guru</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-50 py-4 scroll-reveal">
+        <div class="container mx-auto px-4">
+            <nav class="text-sm">
+                <a href="index.html" class="text-gray-500 hover:text-primary transition-colors duration-300">Home</a>
+                <span class="mx-2 text-gray-400">/</span>
+                <span class="text-textDark font-medium">Shopping Cart</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Cart Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Cart Items -->
+            <div class="lg:col-span-2 scroll-reveal">
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-6 border-b border-gray-200">
+                        <h2 class="text-2xl font-bold text-secondary">Shopping Cart (2 items)</h2>
+                    </div>
+                    
+                    <!-- Cart Item 1 -->
+                    <div class="p-6 border-b border-gray-100">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-20 h-24 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-book text-2xl text-secondary/30"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-lg mb-1">Spiritual Wisdom for Modern Life</h3>
+                                <p class="text-gray-600 text-sm mb-2">By His Holiness Jayapataka Swami</p>
+                                <div class="flex items-center space-x-4 text-sm text-gray-600">
+                                    <span>Format: Paperback</span>
+                                    <span>Language: English</span>
+                                </div>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-success text-sm"><i class="fas fa-check-circle mr-1"></i>In Stock</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <button class="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50">-</button>
+                                    <span class="w-12 text-center font-semibold">1</span>
+                                    <button class="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50">+</button>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xl font-bold text-secondary">₹299</div>
+                                    <div class="text-sm text-gray-400 line-through">₹399</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col space-y-2">
+                                <button class="text-gray-400 hover:text-red-500">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-primary">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cart Item 2 -->
+                    <div class="p-6 border-b border-gray-100">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-20 h-24 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-book text-2xl text-secondary/30"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-lg mb-1">Path to Enlightenment</h3>
+                                <p class="text-gray-600 text-sm mb-2">By His Holiness Jayapataka Swami</p>
+                                <div class="flex items-center space-x-4 text-sm text-gray-600">
+                                    <span>Format: Hardcover</span>
+                                    <span>Language: English</span>
+                                </div>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-success text-sm"><i class="fas fa-check-circle mr-1"></i>In Stock</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <button class="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50">-</button>
+                                    <span class="w-12 text-center font-semibold">1</span>
+                                    <button class="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50">+</button>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xl font-bold text-secondary">₹349</div>
+                                    <div class="text-sm text-gray-400 line-through">₹449</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col space-y-2">
+                                <button class="text-gray-400 hover:text-red-500">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-primary">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cart Actions -->
+                    <div class="p-6">
+                        <div class="flex justify-between items-center">
+                            <a href="products.html" class="text-primary hover:underline">
+                                <i class="fas fa-arrow-left mr-2"></i>Continue Shopping
+                            </a>
+                            <button class="text-gray-500 hover:text-red-500">
+                                <i class="fas fa-trash mr-2"></i>Clear Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommended Products -->
+                <div class="mt-8 bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 scroll-reveal">
+                    <h3 class="text-xl font-bold text-secondary mb-6">You might also like</h3>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Recommended Product 1 -->
+                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all duration-300 hover-scale">
+                            <div class="h-32 bg-gradient-to-br from-accent/20 to-primary/20 rounded-lg flex items-center justify-center mb-3">
+                                <i class="fas fa-book text-3xl text-secondary/30"></i>
+                            </div>
+                            <h4 class="font-semibold text-sm mb-1">Divine Consciousness</h4>
+                            <p class="text-xs text-gray-600 mb-2">By His Holiness Jayapataka Swami</p>
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-secondary">₹199</span>
+                                <a href="product-detail.html" class="bg-primary text-white px-3 py-1 rounded text-xs hover:bg-primary/90 inline-block">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Recommended Product 2 -->
+                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all duration-300 hover-scale">
+                            <div class="h-32 bg-gradient-to-br from-success/20 to-secondary/20 rounded-lg flex items-center justify-center mb-3">
+                                <i class="fas fa-book text-3xl text-secondary/30"></i>
+                            </div>
+                            <h4 class="font-semibold text-sm mb-1">Sacred Teachings</h4>
+                            <p class="text-xs text-gray-600 mb-2">By His Holiness Jayapataka Swami</p>
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-secondary">₹399</span>
+                                <a href="product-detail.html" class="bg-primary text-white px-3 py-1 rounded text-xs hover:bg-primary/90 inline-block">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Recommended Product 3 -->
+                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all duration-300 hover-scale">
+                            <div class="h-32 bg-gradient-to-br from-primary/20 to-success/20 rounded-lg flex items-center justify-center mb-3">
+                                <i class="fas fa-book text-3xl text-secondary/30"></i>
+                            </div>
+                            <h4 class="font-semibold text-sm mb-1">Meditation Guide</h4>
+                            <p class="text-xs text-gray-600 mb-2">By His Holiness Jayapataka Swami</p>
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-secondary">₹179</span>
+                                <a href="product-detail.html" class="bg-primary text-white px-3 py-1 rounded text-xs hover:bg-primary/90 inline-block">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="lg:col-span-1 scroll-reveal">
+                <div class="bg-white rounded-xl shadow-lg sticky top-24 hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-xl font-bold text-secondary">Order Summary</h3>
+                    </div>
+                    
+                    <div class="p-6">
+                        <!-- Delivery Address -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Delivery Address</h4>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-medium">Home</span>
+                                    <button class="text-primary text-sm hover:underline">Change</button>
+                                </div>
+                                <p class="text-sm text-gray-600">
+                                    123 Spiritual Street<br>
+                                    Sacred City, State 123456<br>
+                                    India
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Pincode Check -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Check Delivery</h4>
+                            <div class="flex space-x-2">
+                                <input type="text" placeholder="Enter pincode" 
+                                       class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary/90">
+                                    Check
+                                </button>
+                            </div>
+                            <p class="text-sm text-success mt-2">
+                                <i class="fas fa-check-circle mr-1"></i>Delivery available in your area
+                            </p>
+                        </div>
+
+                        <!-- Price Breakdown -->
+                        <div class="space-y-3 mb-6">
+                            <div class="flex justify-between">
+                                <span>Subtotal (2 items)</span>
+                                <span>₹648</span>
+                            </div>
+                            <div class="flex justify-between text-success">
+                                <span>Discount</span>
+                                <span>-₹100</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Shipping</span>
+                                <span class="text-success">FREE</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Tax</span>
+                                <span>₹32</span>
+                            </div>
+                            <div class="border-t border-gray-200 pt-3">
+                                <div class="flex justify-between text-lg font-bold">
+                                    <span>Total</span>
+                                    <span class="text-secondary">₹580</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coupon Code -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Coupon Code</h4>
+                            <div class="flex space-x-2">
+                                <input type="text" placeholder="Enter coupon code" 
+                                       class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                                <button class="bg-secondary text-white px-4 py-2 rounded-lg text-sm hover:bg-secondary/90">
+                                    Apply
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Checkout Button -->
+                        <button class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition mb-4">
+                            Proceed to Checkout
+                        </button>
+
+                        <!-- Payment Methods -->
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600 mb-3">We accept</p>
+                            <div class="flex justify-center space-x-3">
+                                <div class="w-10 h-6 bg-blue-600 rounded flex items-center justify-center">
+                                    <span class="text-white text-xs font-bold">VISA</span>
+                                </div>
+                                <div class="w-10 h-6 bg-red-600 rounded flex items-center justify-center">
+                                    <span class="text-white text-xs font-bold">MC</span>
+                                </div>
+                                <div class="w-10 h-6 bg-primary rounded flex items-center justify-center">
+                                    <span class="text-white text-xs font-bold">RP</span>
+                                </div>
+                                <div class="w-10 h-6 bg-purple-600 rounded flex items-center justify-center">
+                                    <span class="text-white text-xs font-bold">UPI</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Security Info -->
+                        <div class="mt-6 text-center">
+                            <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                                <i class="fas fa-shield-alt text-success"></i>
+                                <span>Secure checkout with SSL encryption</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Same as other pages) -->
+    <footer class="bg-textDark text-white py-16 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                            <i class="fas fa-flag text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold">Victory Flag</h4>
+                            <p class="text-sm text-gray-400">Publications</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Spreading spiritual wisdom through the profound teachings of His Holiness Jayapataka Swami.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">Our Books</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Audio Books</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Teachings</a></li>
+                        <li><a href="admin-dashboard.html" class="text-gray-400 hover:text-white">Admin</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Customer Service</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Track Your Order</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Contact Info</h5>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt text-primary"></i>
+                            <span class="text-gray-400">123 Spiritual Street, Sacred City, India</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-primary"></i>
+                            <span class="text-gray-400">+91 98765 43210</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-primary"></i>
+                            <span class="text-gray-400">info@victoryflagpublications.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 Victory Flag Publications. All rights reserved. | 
+                    <a href="#" class="hover:text-white">Privacy Policy</a> | 
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-reveal elements
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add stagger effect to elements
+        document.querySelectorAll('.scroll-reveal').forEach((el, index) => {
+            el.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Quantity controls for cart items
+        document.querySelectorAll('.w-8.h-8').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const isPlus = button.textContent === '+';
+                const isMinus = button.textContent === '-';
+                
+                if (isPlus || isMinus) {
+                    const quantitySpan = isPlus ? 
+                        button.previousElementSibling : 
+                        button.nextElementSibling;
+                    
+                    let quantity = parseInt(quantitySpan.textContent);
+                    
+                    if (isPlus) {
+                        quantity++;
+                    } else if (isMinus && quantity > 1) {
+                        quantity--;
+                    }
+                    
+                    quantitySpan.textContent = quantity;
+                }
+            });
+        });
+
+        // Coupon code application
+        const couponButton = document.querySelector('button:contains("Apply")');
+        if (couponButton) {
+            couponButton.addEventListener('click', () => {
+                const couponInput = couponButton.previousElementSibling;
+                const couponCode = couponInput.value.trim();
+                
+                if (couponCode) {
+                    // Simulate coupon application
+                    alert(`Coupon "${couponCode}" applied successfully!`);
+                    couponInput.value = '';
+                }
+            });
+        }
+
+        // Pincode check
+        const pincodeButton = document.querySelector('button:contains("Check")');
+        if (pincodeButton) {
+            pincodeButton.addEventListener('click', () => {
+                const pincodeInput = pincodeButton.previousElementSibling;
+                const pincode = pincodeInput.value.trim();
+                
+                if (pincode && pincode.length === 6) {
+                    // Simulate pincode check
+                    alert(`Delivery available for pincode: ${pincode}`);
+                } else {
+                    alert('Please enter a valid 6-digit pincode');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

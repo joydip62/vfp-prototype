@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiritual Wisdom for Modern Life - Victory Flag Publications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#8B4513',
+                        accent: '#FFD700',
+                        background: '#FFF8F0',
+                        textDark: '#2F2F2F',
+                        success: '#228B22'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out; }
+        .animate-bounce-in { animation: bounceIn 0.8s ease-out; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .hover-scale { transition: transform 0.3s ease; }
+        .hover-scale:hover { transform: scale(1.05); }
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+        .animate-pulse-slow { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    </style>
+</head>
+<body class="font-poppins bg-background text-textDark">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <!-- Top Bar -->
+      <div class="bg-secondary text-white py-2">
+        <div
+          class="container mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center text-sm"
+        >
+          <div class="flex items-center space-x-4">
+            <span><i class="fas fa-phone mr-1"></i> +91 98765 43210</span>
+            <span class="hidden md:block"
+              ><i class="fas fa-envelope mr-1"></i>
+              info@victoryflagpublications.com</span
+            >
+          </div>
+          <div class="flex items-center space-x-4">
+            <select class="bg-transparent border-none text-white text-sm">
+              <option>English</option>
+              <option>বাংলা</option>
+              <option>हिंदी</option>
+            </select>
+            <a href="#" class="hover:text-accent transition-colors duration-300"
+              >Track Order</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Header -->
+      <div class="container mx-auto px-4 md:px-8 lg:px-12 py-3 md:py-4">
+        <div class="flex items-center justify-between gap-2 md:gap-4">
+          <!-- Logo -->
+          <div class="flex items-center space-x-2 md:space-x-3 flex-shrink-0">
+            <div
+              class="w-8 h-8 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center hover-scale"
+            >
+              <i class="fas fa-flag text-white text-sm md:text-xl"></i>
+            </div>
+            <div class="hidden sm:block">
+              <h1 class="text-lg md:text-2xl font-bold text-secondary">
+                Victory Flag
+              </h1>
+              <p class="text-xs md:text-sm text-gray-600">Publications</p>
+            </div>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="flex-1 max-w-md md:max-w-2xl mx-2 md:mx-8">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Search books..."
+                class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition-colors duration-300"
+              />
+              <button
+                class="absolute right-2 md:right-3 top-2 md:top-3 text-gray-400 hover:text-primary transition-colors duration-300"
+              >
+                <i class="fas fa-search text-sm md:text-base"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Header Actions -->
+          <div class="flex items-center space-x-2 md:space-x-6 flex-shrink-0">
+            <a
+              href="auth.html"
+              class="flex flex-col md:flex-row items-center space-x-0 md:space-x-1 hover:text-primary transition-colors duration-300 p-1"
+            >
+              <i class="fas fa-user text-sm md:text-base"></i>
+              <span class="hidden lg:block text-xs md:text-sm">Account</span>
+            </a>
+            <a
+              href="#"
+              class="flex flex-col md:flex-row items-center space-x-0 md:space-x-1 hover:text-primary relative transition-colors duration-300 p-1"
+            >
+              <i class="fas fa-heart text-sm md:text-base"></i>
+              <span class="hidden lg:block text-xs md:text-sm">Wishlist</span>
+              <span
+                class="absolute -top-1 -right-1 md:-top-2 md:-right-2 bg-primary text-white text-xs rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center animate-pulse-slow"
+                >3</span
+              >
+            </a>
+            <a
+              href="cart.html"
+              class="flex flex-col md:flex-row items-center space-x-0 md:space-x-1 hover:text-primary relative transition-colors duration-300 p-1"
+            >
+              <i class="fas fa-shopping-cart text-sm md:text-base"></i>
+              <span class="hidden lg:block text-xs md:text-sm">Cart</span>
+              <span
+                class="absolute -top-1 -right-1 md:-top-2 md:-right-2 bg-primary text-white text-xs rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center animate-pulse-slow"
+                >2</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="bg-primary text-white">
+        <div class="container mx-auto px-4 md:px-8 lg:px-12">
+          <div class="flex items-center justify-between py-3">
+            <!-- Desktop Menu -->
+            <ul
+              class="hidden lg:flex items-center justify-center space-x-8 w-full"
+            >
+              <li>
+                <a
+                  href="index.html"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Home</a
+                >
+              </li>
+              <li class="relative group">
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium flex items-center transition-colors duration-300"
+                >
+                  Categories <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="products.html"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Spiritual Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Teachings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Audio Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >About Guru</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-accent font-medium transition-colors duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button
+              id="mobileMenuBtn"
+              class="lg:hidden flex items-center justify-center w-8 h-8"
+            >
+              <div class="space-y-1">
+                <div
+                  class="w-6 h-0.5 bg-white transition-all duration-300"
+                ></div>
+                <div
+                  class="w-6 h-0.5 bg-white transition-all duration-300"
+                ></div>
+                <div
+                  class="w-6 h-0.5 bg-white transition-all duration-300"
+                ></div>
+              </div>
+            </button>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div
+            id="mobileMenu"
+            class="lg:hidden hidden bg-secondary/95 backdrop-blur-sm"
+          >
+            <ul class="py-4 space-y-2">
+              <li>
+                <a
+                  href="index.html"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Categories</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Spiritual Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Teachings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Audio Books</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >About Guru</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-white/10 transition-colors duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-50 py-4 scroll-reveal">
+        <div class="container mx-auto px-4">
+            <nav class="text-sm">
+                <a href="index.html" class="text-gray-500 hover:text-primary transition-colors duration-300">Home</a>
+                <span class="mx-2 text-gray-400">/</span>
+                <a href="products.html" class="text-gray-500 hover:text-primary transition-colors duration-300">Spiritual Books</a>
+                <span class="mx-2 text-gray-400">/</span>
+                <span class="text-textDark font-medium">Spiritual Wisdom for Modern Life</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Product Detail -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid lg:grid-cols-2 gap-12">
+            <!-- Product Images -->
+            <div class="scroll-reveal">
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-6 hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-book text-8xl text-secondary/30"></i>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="h-20 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg flex items-center justify-center cursor-pointer border-2 border-primary">
+                            <i class="fas fa-book text-2xl text-secondary/50"></i>
+                        </div>
+                        <div class="h-20 bg-gradient-to-br from-secondary/10 to-accent/10 rounded-lg flex items-center justify-center cursor-pointer">
+                            <i class="fas fa-book text-2xl text-secondary/50"></i>
+                        </div>
+                        <div class="h-20 bg-gradient-to-br from-accent/10 to-primary/10 rounded-lg flex items-center justify-center cursor-pointer">
+                            <i class="fas fa-book text-2xl text-secondary/50"></i>
+                        </div>
+                        <div class="h-20 bg-gradient-to-br from-success/10 to-secondary/10 rounded-lg flex items-center justify-center cursor-pointer">
+                            <i class="fas fa-book text-2xl text-secondary/50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="scroll-reveal">
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+                    <!-- Product Title -->
+                    <h1 class="text-3xl font-bold text-secondary mb-4">Spiritual Wisdom for Modern Life</h1>
+                    <p class="text-lg text-gray-600 mb-4">By His Holiness Jayapataka Swami</p>
+                    
+                    <!-- Rating -->
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-accent text-lg">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">(124 reviews)</span>
+                        <a href="#reviews" class="text-primary ml-4 hover:underline">See all reviews</a>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="mb-6">
+                        <div class="flex items-center space-x-4 mb-2">
+                            <span class="text-4xl font-bold text-secondary">₹299</span>
+                            <span class="text-2xl text-gray-400 line-through">₹399</span>
+                            <span class="bg-success text-white px-3 py-1 rounded-full text-sm font-semibold">25% OFF</span>
+                        </div>
+                        <p class="text-sm text-gray-600">Inclusive of all taxes</p>
+                    </div>
+
+                    <!-- Delivery Info -->
+                    <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                        <h3 class="font-semibold mb-3">Delivery Information</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-primary w-5"></i>
+                                <span class="text-sm">Enter pincode to check delivery availability</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <input type="text" placeholder="Enter pincode" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-primary/90">Check</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Options -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold mb-3">Format</h3>
+                        <div class="flex space-x-3">
+                            <button class="px-4 py-2 border-2 border-primary text-primary rounded-lg font-medium">Paperback</button>
+                            <button class="px-4 py-2 border border-gray-300 text-gray-600 rounded-lg hover:border-primary hover:text-primary">Hardcover (+₹100)</button>
+                            <button class="px-4 py-2 border border-gray-300 text-gray-600 rounded-lg hover:border-primary hover:text-primary">E-book (₹149)</button>
+                        </div>
+                    </div>
+
+                    <!-- Language Options -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold mb-3">Language</h3>
+                        <div class="flex space-x-3">
+                            <button class="px-4 py-2 border-2 border-primary text-primary rounded-lg font-medium">English</button>
+                            <button class="px-4 py-2 border border-gray-300 text-gray-600 rounded-lg hover:border-primary hover:text-primary">বাংলা</button>
+                            <button class="px-4 py-2 border border-gray-300 text-gray-600 rounded-lg hover:border-primary hover:text-primary">हिंदी</button>
+                        </div>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold mb-3">Quantity</h3>
+                        <div class="flex items-center space-x-3">
+                            <button class="w-10 h-10 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50">-</button>
+                            <span class="w-12 text-center font-semibold">1</span>
+                            <button class="w-10 h-10 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex space-x-4 mb-6">
+                        <button class="flex-1 bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                        </button>
+                        <button class="flex-1 bg-secondary text-white py-3 rounded-lg font-semibold hover:bg-secondary/90 transition">
+                            Buy Now
+                        </button>
+                        <button class="px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50">
+                            <i class="fas fa-heart text-gray-400 hover:text-red-500"></i>
+                        </button>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-shipping-fast text-success"></i>
+                            <span>Free Shipping</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-undo text-success"></i>
+                            <span>Easy Returns</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-shield-alt text-success"></i>
+                            <span>Secure Payment</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-certificate text-success"></i>
+                            <span>Authentic Books</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Details Tabs -->
+        <div class="mt-12 scroll-reveal">
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <!-- Tab Headers -->
+                <div class="border-b border-gray-200">
+                    <nav class="flex space-x-8 px-8">
+                        <button class="py-4 border-b-2 border-primary text-primary font-semibold">Description</button>
+                        <button class="py-4 border-b-2 border-transparent text-gray-500 hover:text-primary">Specifications</button>
+                        <button class="py-4 border-b-2 border-transparent text-gray-500 hover:text-primary">Reviews (124)</button>
+                        <button class="py-4 border-b-2 border-transparent text-gray-500 hover:text-primary">About Author</button>
+                    </nav>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="p-8">
+                    <!-- Description Tab -->
+                    <div>
+                        <h3 class="text-xl font-bold text-secondary mb-4">About This Book</h3>
+                        <div class="prose max-w-none text-gray-600 leading-relaxed">
+                            <p class="mb-4">
+                                "Spiritual Wisdom for Modern Life" is a profound exploration of ancient spiritual principles applied to contemporary living. His Holiness Jayapataka Swami masterfully bridges the gap between timeless wisdom and modern challenges, offering practical guidance for spiritual seekers in today's fast-paced world.
+                            </p>
+                            <p class="mb-4">
+                                This comprehensive guide covers essential topics including meditation practices, ethical living, finding purpose in daily activities, and cultivating inner peace amidst external chaos. The book is structured to provide both theoretical understanding and practical applications, making it accessible to readers at all levels of spiritual development.
+                            </p>
+                            <p class="mb-4">
+                                Through personal anecdotes, scriptural references, and practical exercises, readers will discover how to integrate spiritual principles into their professional lives, relationships, and personal growth journey. The author's compassionate approach and deep understanding of both Eastern philosophy and Western psychology create a unique perspective that resonates with modern readers.
+                            </p>
+                            
+                            <h4 class="text-lg font-semibold text-secondary mt-6 mb-3">Key Features:</h4>
+                            <ul class="list-disc list-inside space-y-2 mb-6">
+                                <li>Practical meditation techniques for busy lifestyles</li>
+                                <li>Guidelines for ethical decision-making in modern contexts</li>
+                                <li>Strategies for maintaining spiritual practice in urban environments</li>
+                                <li>Insights on balancing material success with spiritual growth</li>
+                                <li>Methods for developing compassion and mindfulness</li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold text-secondary mt-6 mb-3">What Readers Are Saying:</h4>
+                            <blockquote class="border-l-4 border-primary pl-4 italic text-gray-700 mb-4">
+                                "This book has transformed my understanding of spirituality. The practical advice is invaluable for anyone seeking to live a more meaningful life." - Dr. Priya Sharma
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products -->
+        <div class="mt-16 scroll-reveal">
+            <h3 class="text-2xl font-bold text-secondary mb-8">Related Books</h3>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Related Product 1 -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 group hover-scale scroll-reveal">
+                    <div class="relative overflow-hidden rounded-t-xl">
+                        <div class="h-48 bg-gradient-to-br from-secondary/20 to-accent/20 flex items-center justify-center">
+                            <i class="fas fa-book text-4xl text-secondary/30"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
+                            <button class="bg-white/90 p-2 rounded-full hover:bg-white">
+                                <i class="fas fa-heart text-gray-400 hover:text-red-500"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-2">Path to Enlightenment</h4>
+                        <p class="text-gray-600 text-sm mb-2">By His Holiness Jayapataka Swami</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-secondary">₹249</span>
+                            <a href="product-detail.html" class="bg-primary text-white px-3 py-1 rounded text-sm hover:bg-primary/90 inline-block">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Product 2 -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 group hover-scale scroll-reveal">
+                    <div class="relative overflow-hidden rounded-t-xl">
+                        <div class="h-48 bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
+                            <i class="fas fa-book text-4xl text-secondary/30"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
+                            <button class="bg-white/90 p-2 rounded-full hover:bg-white">
+                                <i class="fas fa-heart text-gray-400 hover:text-red-500"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-2">Divine Consciousness</h4>
+                        <p class="text-gray-600 text-sm mb-2">By His Holiness Jayapataka Swami</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-secondary">₹199</span>
+                            <a href="product-detail.html" class="bg-primary text-white px-3 py-1 rounded text-sm hover:bg-primary/90 inline-block">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Product 3 -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 group hover-scale scroll-reveal">
+                    <div class="relative overflow-hidden rounded-t-xl">
+                        <div class="h-48 bg-gradient-to-br from-success/20 to-secondary/20 flex items-center justify-center">
+                            <i class="fas fa-book text-4xl text-secondary/30"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
+                            <button class="bg-white/90 p-2 rounded-full hover:bg-white">
+                                <i class="fas fa-heart text-gray-400 hover:text-red-500"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-2">Sacred Teachings Collection</h4>
+                        <p class="text-gray-600 text-sm mb-2">By His Holiness Jayapataka Swami</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-secondary">₹399</span>
+                            <a href="product-detail.html" class="bg-primary text-white px-3 py-1 rounded text-sm hover:bg-primary/90 inline-block">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Product 4 -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 group hover-scale scroll-reveal">
+                    <div class="relative overflow-hidden rounded-t-xl">
+                        <div class="h-48 bg-gradient-to-br from-primary/20 to-success/20 flex items-center justify-center">
+                            <i class="fas fa-book text-4xl text-secondary/30"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
+                            <button class="bg-white/90 p-2 rounded-full hover:bg-white">
+                                <i class="fas fa-heart text-gray-400 hover:text-red-500"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-2">Meditation and Mindfulness</h4>
+                        <p class="text-gray-600 text-sm mb-2">By His Holiness Jayapataka Swami</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-secondary">₹179</span>
+                            <a href="product-detail.html" class="bg-primary text-white px-3 py-1 rounded text-sm hover:bg-primary/90 inline-block">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Same as other pages) -->
+    <footer class="bg-textDark text-white py-16 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                            <i class="fas fa-flag text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold">Victory Flag</h4>
+                            <p class="text-sm text-gray-400">Publications</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Spreading spiritual wisdom through the profound teachings of His Holiness Jayapataka Swami.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">Our Books</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Audio Books</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Teachings</a></li>
+                        <li><a href="admin-dashboard.html" class="text-gray-400 hover:text-white">Admin</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Customer Service</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Track Your Order</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h5 class="font-semibold text-lg mb-4">Contact Info</h5>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt text-primary"></i>
+                            <span class="text-gray-400">123 Spiritual Street, Sacred City, India</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-primary"></i>
+                            <span class="text-gray-400">+91 98765 43210</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-primary"></i>
+                            <span class="text-gray-400">info@victoryflagpublications.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 Victory Flag Publications. All rights reserved. | 
+                    <a href="#" class="hover:text-white">Privacy Policy</a> | 
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-reveal elements
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add stagger effect to elements
+        document.querySelectorAll('.scroll-reveal').forEach((el, index) => {
+            el.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('nav button');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active state from all buttons
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('border-primary', 'text-primary');
+                    btn.classList.add('border-transparent', 'text-gray-500');
+                });
+                // Add active state to clicked button
+                button.classList.remove('border-transparent', 'text-gray-500');
+                button.classList.add('border-primary', 'text-primary');
+            });
+        });
+
+        // Quantity controls
+        const quantityMinus = document.querySelector('.w-10.h-10:first-of-type');
+        const quantityPlus = document.querySelector('.w-10.h-10:last-of-type');
+        const quantityDisplay = document.querySelector('.w-12.text-center');
+        
+        let quantity = 1;
+        
+        if (quantityMinus && quantityPlus && quantityDisplay) {
+            quantityMinus.addEventListener('click', () => {
+                if (quantity > 1) {
+                    quantity--;
+                    quantityDisplay.textContent = quantity;
+                }
+            });
+            
+            quantityPlus.addEventListener('click', () => {
+                quantity++;
+                quantityDisplay.textContent = quantity;
+            });
+        }
+    </script>
+</body>
+</html>

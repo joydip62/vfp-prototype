@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Victory Flag Publications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#8B4513',
+                        accent: '#FFD700',
+                        background: '#FFF8F0',
+                        textDark: '#2F2F2F',
+                        success: '#228B22'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out; }
+        .animate-bounce-in { animation: bounceIn 0.8s ease-out; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .hover-scale { transition: transform 0.3s ease; }
+        .hover-scale:hover { transform: scale(1.05); }
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+        .animate-pulse-slow { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .modal { display: none; }
+        .modal.active { display: flex; }
+    </style>
+</head>
+<body class="font-poppins bg-background text-textDark">
+    <!-- Admin Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="flex items-center justify-between px-4 lg:px-6 py-4">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover-scale">
+                    <i class="fas fa-flag text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-secondary">Victory Flag Admin</h1>
+                    <p class="text-xs text-gray-600">Publications Management</p>
+                </div>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="flex items-center space-x-4">
+                <button class="relative p-2 text-gray-600 hover:text-primary transition-colors duration-300">
+                    <i class="fas fa-bell"></i>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse-slow">3</span>
+                </button>
+                <div class="flex items-center space-x-3 bg-gray-50 rounded-lg px-3 py-2">
+                    <div class="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-white text-sm"></i>
+                    </div>
+                    <div class="hidden md:block">
+                        <p class="text-sm font-semibold">Admin User</p>
+                        <p class="text-xs text-gray-600">Administrator</p>
+                    </div>
+                    <button class="text-gray-600 hover:text-primary transition-colors duration-300">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors duration-300">
+                    <i class="fas fa-home"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-lg hidden lg:block">
+            <nav class="p-6">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#dashboard" class="flex items-center space-x-3 px-4 py-3 bg-primary text-white rounded-lg admin-nav">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#products" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg admin-nav transition-colors duration-300">
+                            <i class="fas fa-book"></i>
+                            <span>Products</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#orders" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg admin-nav transition-colors duration-300">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#customers" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg admin-nav transition-colors duration-300">
+                            <i class="fas fa-users"></i>
+                            <span>Customers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#analytics" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg admin-nav transition-colors duration-300">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#inventory" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg admin-nav transition-colors duration-300">
+                            <i class="fas fa-warehouse"></i>
+                            <span>Inventory</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#marketing" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg admin-nav transition-colors duration-300">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Marketing</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#reports" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg admin-nav transition-colors duration-300">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#settings" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg admin-nav transition-colors duration-300">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="pt-4 border-t border-gray-200">
+                        <a href="auth.html" class="flex items-center space-x-3 px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-300">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="lg:hidden fixed bottom-4 right-4 bg-primary text-white p-4 rounded-full shadow-lg z-50 hover-scale">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-4 lg:p-8">
+            <!-- Dashboard Overview -->
+            <div id="dashboard-content" class="admin-content">
+                <div class="mb-8 scroll-reveal">
+                    <h2 class="text-3xl font-bold text-secondary mb-2">Dashboard Overview</h2>
+                    <p class="text-gray-600">Welcome back! Here's what's happening with your store today.</p>
+                </div>
+
+            <!-- Stats Cards -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Total Sales -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Total Sales</p>
+                            <p class="text-2xl font-bold text-secondary">₹1,24,580</p>
+                            <p class="text-success text-sm">+12.5% from last month</p>
+                        </div>
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-rupee-sign text-primary text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Orders -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Total Orders</p>
+                            <p class="text-2xl font-bold text-secondary">1,247</p>
+                            <p class="text-success text-sm">+8.2% from last month</p>
+                        </div>
+                        <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-shopping-cart text-secondary text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Customers -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Total Customers</p>
+                            <p class="text-2xl font-bold text-secondary">892</p>
+                            <p class="text-success text-sm">+15.3% from last month</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-users text-accent text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Books in Stock -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Books in Stock</p>
+                            <p class="text-2xl font-bold text-secondary">2,456</p>
+                            <p class="text-red-500 text-sm">-3.1% from last month</p>
+                        </div>
+                        <div class="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-book text-success text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts and Tables Row -->
+            <div class="grid lg:grid-cols-2 gap-6 mb-8">
+                <!-- Sales Chart -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 scroll-reveal">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-bold text-secondary">Sales Overview</h3>
+                        <select class="border border-gray-300 rounded-lg px-3 py-1 text-sm">
+                            <option>Last 7 days</option>
+                            <option>Last 30 days</option>
+                            <option>Last 3 months</option>
+                        </select>
+                    </div>
+                    <div class="h-64 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-chart-line text-4xl text-gray-300 mb-4"></i>
+                            <p class="text-gray-500">Sales Chart Placeholder</p>
+                            <p class="text-sm text-gray-400">Chart will be implemented with Chart.js</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Selling Books -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 scroll-reveal">
+                    <h3 class="text-xl font-bold text-secondary mb-6">Top Selling Books</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-16 bg-gradient-to-br from-primary/20 to-secondary/20 rounded flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-book text-secondary/50"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold">Spiritual Wisdom for Modern Life</h4>
+                                <p class="text-sm text-gray-600">124 sold this month</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-bold text-secondary">₹299</p>
+                                <p class="text-sm text-success">+15%</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-16 bg-gradient-to-br from-secondary/20 to-accent/20 rounded flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-book text-secondary/50"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold">Path to Enlightenment</h4>
+                                <p class="text-sm text-gray-600">98 sold this month</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-bold text-secondary">₹249</p>
+                                <p class="text-sm text-success">+8%</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-16 bg-gradient-to-br from-accent/20 to-primary/20 rounded flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-book text-secondary/50"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold">Divine Consciousness</h4>
+                                <p class="text-sm text-gray-600">87 sold this month</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-bold text-secondary">₹199</p>
+                                <p class="text-sm text-success">+12%</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-16 bg-gradient-to-br from-success/20 to-secondary/20 rounded flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-book text-secondary/50"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold">Sacred Teachings Collection</h4>
+                                <p class="text-sm text-gray-600">76 sold this month</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-bold text-secondary">₹399</p>
+                                <p class="text-sm text-success">+5%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders and Quick Actions -->
+            <div class="grid lg:grid-cols-3 gap-6">
+                <!-- Recent Orders -->
+                <div class="lg:col-span-2 bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 scroll-reveal">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-bold text-secondary">Recent Orders</h3>
+                        <a href="#" class="text-primary hover:underline">View All</a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-3 text-sm font-semibold text-gray-600">Order ID</th>
+                                    <th class="text-left py-3 text-sm font-semibold text-gray-600">Customer</th>
+                                    <th class="text-left py-3 text-sm font-semibold text-gray-600">Amount</th>
+                                    <th class="text-left py-3 text-sm font-semibold text-gray-600">Status</th>
+                                    <th class="text-left py-3 text-sm font-semibold text-gray-600">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 text-sm">#VFP-1001</td>
+                                    <td class="py-3 text-sm">Priya Sharma</td>
+                                    <td class="py-3 text-sm font-semibold">₹580</td>
+                                    <td class="py-3">
+                                        <span class="px-2 py-1 bg-success/10 text-success text-xs rounded-full">Delivered</span>
+                                    </td>
+                                    <td class="py-3 text-sm text-gray-600">Dec 15, 2024</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 text-sm">#VFP-1002</td>
+                                    <td class="py-3 text-sm">Rajesh Kumar</td>
+                                    <td class="py-3 text-sm font-semibold">₹299</td>
+                                    <td class="py-3">
+                                        <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">Processing</span>
+                                    </td>
+                                    <td class="py-3 text-sm text-gray-600">Dec 15, 2024</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 text-sm">#VFP-1003</td>
+                                    <td class="py-3 text-sm">Anita Devi</td>
+                                    <td class="py-3 text-sm font-semibold">₹449</td>
+                                    <td class="py-3">
+                                        <span class="px-2 py-1 bg-accent/10 text-accent text-xs rounded-full">Shipped</span>
+                                    </td>
+                                    <td class="py-3 text-sm text-gray-600">Dec 14, 2024</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 text-sm">#VFP-1004</td>
+                                    <td class="py-3 text-sm">Suresh Patel</td>
+                                    <td class="py-3 text-sm font-semibold">₹199</td>
+                                    <td class="py-3">
+                                        <span class="px-2 py-1 bg-red-100 text-red-600 text-xs rounded-full">Cancelled</span>
+                                    </td>
+                                    <td class="py-3 text-sm text-gray-600">Dec 14, 2024</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 text-sm">#VFP-1005</td>
+                                    <td class="py-3 text-sm">Maya Singh</td>
+                                    <td class="py-3 text-sm font-semibold">₹648</td>
+                                    <td class="py-3">
+                                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full">Pending</span>
+                                    </td>
+                                    <td class="py-3 text-sm text-gray-600">Dec 13, 2024</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 scroll-reveal">
+                    <h3 class="text-xl font-bold text-secondary mb-6">Quick Actions</h3>
+                    <div class="space-y-4">
+                        <button class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition flex items-center justify-center space-x-2">
+                            <i class="fas fa-plus"></i>
+                            <span>Add New Book</span>
+                        </button>
+                        <button class="w-full bg-secondary text-white py-3 rounded-lg hover:bg-secondary/90 transition flex items-center justify-center space-x-2">
+                            <i class="fas fa-eye"></i>
+                            <span>View All Orders</span>
+                        </button>
+                        <button class="w-full bg-accent text-textDark py-3 rounded-lg hover:bg-yellow-400 transition flex items-center justify-center space-x-2">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Generate Report</span>
+                        </button>
+                        <button class="w-full bg-success text-white py-3 rounded-lg hover:bg-success/90 transition flex items-center justify-center space-x-2">
+                            <i class="fas fa-warehouse"></i>
+                            <span>Manage Inventory</span>
+                        </button>
+                    </div>
+
+                    <!-- Low Stock Alert -->
+                    <div class="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <i class="fas fa-exclamation-triangle text-red-500"></i>
+                            <h4 class="font-semibold text-red-700">Low Stock Alert</h4>
+                        </div>
+                        <p class="text-sm text-red-600 mb-3">5 books are running low on stock</p>
+                        <button class="text-red-600 text-sm hover:underline">View Details →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Management -->
+            <div id="products-content" class="admin-content hidden">
+                <div class="mb-8 scroll-reveal">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div>
+                            <h2 class="text-3xl font-bold text-secondary mb-2">Products Management</h2>
+                            <p class="text-gray-600">Manage your book inventory and catalog</p>
+                        </div>
+                        <button id="addProductBtn" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-all duration-300 hover-scale flex items-center space-x-2">
+                            <i class="fas fa-plus"></i>
+                            <span>Add New Book</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden scroll-reveal">
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                            <div class="flex items-center space-x-4">
+                                <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                                    <option>All Categories</option>
+                                    <option>Spiritual Books</option>
+                                    <option>Devotional</option>
+                                    <option>Educational</option>
+                                </select>
+                                <input type="text" placeholder="Search products..." class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                            </div>
+                            <span class="text-sm text-gray-600">245 total products</span>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Product</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Category</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Price</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Stock</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Status</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr class="hover:bg-gray-50 transition-colors duration-300">
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="w-12 h-16 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
+                                                <i class="fas fa-book text-secondary/50"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-semibold">Spiritual Wisdom for Modern Life</h4>
+                                                <p class="text-sm text-gray-600">By His Holiness Jayapataka Swami</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm text-gray-600">Spiritual Books</td>
+                                    <td class="py-4 px-6 font-semibold">₹299</td>
+                                    <td class="py-4 px-6">
+                                        <span class="px-2 py-1 bg-success/10 text-success text-sm rounded-full">45 in stock</span>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <span class="px-2 py-1 bg-success/10 text-success text-sm rounded-full">Active</span>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center space-x-2">
+                                            <button class="text-primary hover:text-primary/80 transition-colors duration-300">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="text-red-500 hover:text-red-700 transition-colors duration-300">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors duration-300">
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="w-12 h-16 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-lg flex items-center justify-center">
+                                                <i class="fas fa-book text-secondary/50"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-semibold">Path to Enlightenment</h4>
+                                                <p class="text-sm text-gray-600">By His Holiness Jayapataka Swami</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm text-gray-600">Spiritual Books</td>
+                                    <td class="py-4 px-6 font-semibold">₹249</td>
+                                    <td class="py-4 px-6">
+                                        <span class="px-2 py-1 bg-red-100 text-red-600 text-sm rounded-full">5 in stock</span>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <span class="px-2 py-1 bg-success/10 text-success text-sm rounded-full">Active</span>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center space-x-2">
+                                            <button class="text-primary hover:text-primary/80 transition-colors duration-300">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="text-red-500 hover:text-red-700 transition-colors duration-300">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Management -->
+            <div id="orders-content" class="admin-content hidden">
+                <div class="mb-8 scroll-reveal">
+                    <h2 class="text-3xl font-bold text-secondary mb-2">Orders Management</h2>
+                    <p class="text-gray-600">Track and manage customer orders</p>
+                </div>
+
+                <div class="grid lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Pending Orders</p>
+                                <p class="text-2xl font-bold text-primary">23</p>
+                            </div>
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clock text-primary text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Processing</p>
+                                <p class="text-2xl font-bold text-accent">15</p>
+                            </div>
+                            <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-cog text-accent text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Shipped</p>
+                                <p class="text-2xl font-bold text-secondary">42</p>
+                            </div>
+                            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-truck text-secondary text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Delivered</p>
+                                <p class="text-2xl font-bold text-success">156</p>
+                            </div>
+                            <div class="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-success text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden scroll-reveal">
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                            <div class="flex items-center space-x-4">
+                                <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                                    <option>All Orders</option>
+                                    <option>Pending</option>
+                                    <option>Processing</option>
+                                    <option>Shipped</option>
+                                    <option>Delivered</option>
+                                </select>
+                                <input type="text" placeholder="Search orders..." class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Order ID</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Customer</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Products</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Amount</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Status</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Date</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr class="hover:bg-gray-50 transition-colors duration-300">
+                                    <td class="py-4 px-6 font-semibold">#VFP-1001</td>
+                                    <td class="py-4 px-6">
+                                        <div>
+                                            <p class="font-semibold">Priya Sharma</p>
+                                            <p class="text-sm text-gray-600">priya@email.com</p>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm">2 items</td>
+                                    <td class="py-4 px-6 font-semibold">₹580</td>
+                                    <td class="py-4 px-6">
+                                        <span class="px-2 py-1 bg-success/10 text-success text-sm rounded-full">Delivered</span>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm text-gray-600">Dec 15, 2024</td>
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center space-x-2">
+                                            <button class="text-primary hover:text-primary/80 transition-colors duration-300">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="text-secondary hover:text-secondary/80 transition-colors duration-300">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customers Management -->
+            <div id="customers-content" class="admin-content hidden">
+                <div class="mb-8 scroll-reveal">
+                    <h2 class="text-3xl font-bold text-secondary mb-2">Customers Management</h2>
+                    <p class="text-gray-600">Manage customer accounts and relationships</p>
+                </div>
+
+                <div class="grid lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Total Customers</p>
+                                <p class="text-2xl font-bold text-secondary">892</p>
+                                <p class="text-success text-sm">+15 this month</p>
+                            </div>
+                            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-users text-secondary text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Active Customers</p>
+                                <p class="text-2xl font-bold text-success">756</p>
+                                <p class="text-success text-sm">84.7% active</p>
+                            </div>
+                            <div class="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user-check text-success text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Premium Members</p>
+                                <p class="text-2xl font-bold text-accent">124</p>
+                                <p class="text-accent text-sm">13.9% premium</p>
+                            </div>
+                            <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-crown text-accent text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Avg. Order Value</p>
+                                <p class="text-2xl font-bold text-primary">₹425</p>
+                                <p class="text-success text-sm">+8% increase</p>
+                            </div>
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-rupee-sign text-primary text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden scroll-reveal">
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                            <div class="flex items-center space-x-4">
+                                <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                                    <option>All Customers</option>
+                                    <option>Premium Members</option>
+                                    <option>Regular Customers</option>
+                                    <option>Inactive</option>
+                                </select>
+                                <input type="text" placeholder="Search customers..." class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Customer</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Email</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Orders</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Total Spent</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Status</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Joined</th>
+                                    <th class="text-left py-4 px-6 font-semibold text-gray-700">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr class="hover:bg-gray-50 transition-colors duration-300">
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                                                <i class="fas fa-user text-white text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold">Priya Sharma</p>
+                                                <p class="text-sm text-gray-600">+91 98765 43210</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm text-gray-600">priya@email.com</td>
+                                    <td class="py-4 px-6 font-semibold">24</td>
+                                    <td class="py-4 px-6 font-semibold">₹12,450</td>
+                                    <td class="py-4 px-6">
+                                        <span class="px-2 py-1 bg-accent/10 text-accent text-sm rounded-full">Premium</span>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm text-gray-600">Jan 2024</td>
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center space-x-2">
+                                            <button class="text-primary hover:text-primary/80 transition-colors duration-300">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="text-secondary hover:text-secondary/80 transition-colors duration-300">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics -->
+            <div id="analytics-content" class="admin-content hidden">
+                <div class="mb-8 scroll-reveal">
+                    <h2 class="text-3xl font-bold text-secondary mb-2">Analytics & Reports</h2>
+                    <p class="text-gray-600">Detailed insights into your business performance</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 scroll-reveal">
+                        <h3 class="text-xl font-bold text-secondary mb-6">Revenue Analytics</h3>
+                        <div class="h-64 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-chart-line text-4xl text-gray-300 mb-4"></i>
+                                <p class="text-gray-500">Revenue Chart</p>
+                                <p class="text-sm text-gray-400">Monthly revenue trends</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 scroll-reveal">
+                        <h3 class="text-xl font-bold text-secondary mb-6">Customer Growth</h3>
+                        <div class="h-64 bg-gradient-to-br from-success/5 to-accent/5 rounded-lg flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-chart-area text-4xl text-gray-300 mb-4"></i>
+                                <p class="text-gray-500">Growth Chart</p>
+                                <p class="text-sm text-gray-400">Customer acquisition trends</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 scroll-reveal">
+                        <h3 class="text-xl font-bold text-secondary mb-6">Top Performing Products</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-16 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-book text-secondary/50"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">Spiritual Wisdom for Modern Life</h4>
+                                        <p class="text-sm text-gray-600">124 sales this month</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="font-bold text-secondary">₹36,876</p>
+                                    <p class="text-sm text-success">+15% growth</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 scroll-reveal">
+                        <h3 class="text-xl font-bold text-secondary mb-6">Quick Stats</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-600">Conversion Rate</span>
+                                <span class="font-bold text-success">3.2%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-600">Avg. Session</span>
+                                <span class="font-bold text-secondary">4m 32s</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-600">Return Rate</span>
+                                <span class="font-bold text-primary">68%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inventory Management -->
+            <div id="inventory-content" class="admin-content hidden">
+                <div class="mb-8 scroll-reveal">
+                    <h2 class="text-3xl font-bold text-secondary mb-2">Inventory Management</h2>
+                    <p class="text-gray-600">Track stock levels and manage inventory</p>
+                </div>
+
+                <div class="grid lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Total Products</p>
+                                <p class="text-2xl font-bold text-secondary">245</p>
+                            </div>
+                            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-boxes text-secondary text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Low Stock</p>
+                                <p class="text-2xl font-bold text-red-500">12</p>
+                            </div>
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-exclamation-triangle text-red-500 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Out of Stock</p>
+                                <p class="text-2xl font-bold text-red-600">3</p>
+                            </div>
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-times-circle text-red-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover-scale scroll-reveal">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Total Value</p>
+                                <p class="text-2xl font-bold text-success">₹2.4L</p>
+                            </div>
+                            <div class="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-rupee-sign text-success text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-bold text-secondary">Stock Alerts</h3>
+                        <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-all duration-300">
+                            Restock All
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-red-50 border border-red-200 rounded-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-16 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-book text-secondary/50"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Path to Enlightenment</h4>
+                                    <p class="text-sm text-red-600">Only 5 units left</p>
+                                </div>
+                            </div>
+                            <button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all duration-300">
+                                Restock
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div id="settings-content" class="admin-content hidden">
+                <div class="mb-8 scroll-reveal">
+                    <h2 class="text-3xl font-bold text-secondary mb-2">Settings</h2>
+                    <p class="text-gray-600">Configure your store settings and preferences</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+                        <h3 class="text-xl font-bold text-secondary mb-6">Store Information</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Store Name</label>
+                                <input type="text" value="Victory Flag Publications" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Store Email</label>
+                                <input type="email" value="info@victoryflagpublications.com" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" value="+91 98765 43210" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-all duration-300 hover-scale">
+                                Save Changes
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+                            <h3 class="text-lg font-bold text-secondary mb-4">Payment Settings</h3>
+                            <div class="space-y-4">
+                                <label class="flex items-center">
+                                    <input type="checkbox" checked class="rounded border-gray-300 text-primary focus:ring-primary">
+                                    <span class="ml-3 text-sm">Enable Razorpay</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" checked class="rounded border-gray-300 text-primary focus:ring-primary">
+                                    <span class="ml-3 text-sm">Enable UPI Payments</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary">
+                                    <span class="ml-3 text-sm">Enable Cash on Delivery</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-lg p-6 scroll-reveal">
+                            <h3 class="text-lg font-bold text-secondary mb-4">Notification Settings</h3>
+                            <div class="space-y-4">
+                                <label class="flex items-center">
+                                    <input type="checkbox" checked class="rounded border-gray-300 text-primary focus:ring-primary">
+                                    <span class="ml-3 text-sm">Email Notifications</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" checked class="rounded border-gray-300 text-primary focus:ring-primary">
+                                    <span class="ml-3 text-sm">SMS Notifications</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary">
+                                    <span class="ml-3 text-sm">Push Notifications</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div id="addProductModal" class="modal fixed inset-0 bg-black/50 items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-2xl p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-bold text-secondary">Add New Product</h3>
+                <button id="closeModal" class="text-gray-400 hover:text-gray-600 transition-colors duration-300">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <form class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Product Name</label>
+                        <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Author</label>
+                        <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                        <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option>Spiritual Books</option>
+                            <option>Devotional</option>
+                            <option>Educational</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Price (₹)</label>
+                        <input type="number" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Stock Quantity</label>
+                        <input type="number" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                    <textarea rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                </div>
+                <div class="flex justify-end space-x-4">
+                    <button type="button" id="cancelBtn" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-300">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all duration-300 hover-scale">
+                        Add Product
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.admin-nav');
+        const contentSections = document.querySelectorAll('.admin-content');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active states
+                navLinks.forEach(nav => {
+                    nav.classList.remove('bg-primary', 'text-white');
+                    nav.classList.add('text-gray-600');
+                });
+                
+                // Add active state to clicked link
+                link.classList.add('bg-primary', 'text-white');
+                link.classList.remove('text-gray-600');
+                
+                // Hide all content sections
+                contentSections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+                
+                // Show target content
+                const target = link.getAttribute('href').substring(1);
+                const targetContent = document.getElementById(target + '-content');
+                if (targetContent) {
+                    targetContent.classList.remove('hidden');
+                    targetContent.classList.add('animate-fade-in');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.querySelector('aside');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('fixed');
+            sidebar.classList.toggle('inset-0');
+            sidebar.classList.toggle('z-40');
+        });
+
+        // Modal functionality
+        const addProductBtn = document.getElementById('addProductBtn');
+        const addProductModal = document.getElementById('addProductModal');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelBtn');
+
+        addProductBtn.addEventListener('click', () => {
+            addProductModal.classList.add('active');
+        });
+
+        [closeModal, cancelBtn].forEach(btn => {
+            btn.addEventListener('click', () => {
+                addProductModal.classList.remove('active');
+            });
+        });
+
+        // Close modal on outside click
+        addProductModal.addEventListener('click', (e) => {
+            if (e.target === addProductModal) {
+                addProductModal.classList.remove('active');
+            }
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-reveal elements
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add stagger effect to elements
+        document.querySelectorAll('.scroll-reveal').forEach((el, index) => {
+            el.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (form.closest('#addProductModal')) {
+                    alert('Product added successfully!');
+                    addProductModal.classList.remove('active');
+                    form.reset();
+                } else {
+                    alert('Settings updated successfully!');
+                }
+            });
+        });
+
+        // Simulate real-time updates
+        setInterval(() => {
+            const salesElement = document.querySelector('.text-2xl.font-bold.text-secondary');
+            if (salesElement && salesElement.textContent.includes('₹')) {
+                const currentValue = parseInt(salesElement.textContent.replace(/[^0-9]/g, ''));
+                const newValue = currentValue + Math.floor(Math.random() * 100);
+                salesElement.textContent = `₹${newValue.toLocaleString()}`;
+            }
+        }, 30000);
+    </script>
+</body>
+</html>
